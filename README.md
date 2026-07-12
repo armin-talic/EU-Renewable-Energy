@@ -2,6 +2,19 @@
 
 Tracking the EU-27 energy transition from 2000 to 2024, using the [Our World in Data energy dataset](https://github.com/owid/energy-data). All charts are built in R with ggplot2. The analysis moves from overall energy demand, to the electricity mix, to the EU's position among global leaders, and finally to whether economic growth has decoupled from energy use.
 
+## Summary
+
+- Five countries (Germany, France, Italy, Spain, Poland) consume 63.9% of all EU primary energy; Germany alone uses 3,195 TWh.
+- Per capita the picture flips: Malta, Finland and Luxembourg use the most energy per person, Romania the least (19K vs 71K kWh).
+- Sweden covers the highest share of its total energy demand with renewables (51%); Czechia the lowest (10%).
+- Renewables overtook coal in EU electricity generation around 2012-2013 and now produce more than four times as much (roughly 1,300 TWh in 2024).
+- Wind and solar alone have grown from almost nothing in 2000 to about a quarter of EU electricity.
+- Sweden runs the cleanest grid (roughly 99% low-carbon electricity); Malta (84%), Cyprus (77%) and Poland (69%) remain the most fossil-dependent.
+- Denmark achieved the deepest grid decarbonization, cutting its fossil share by 74 points since 2000 (down to 11%).
+- Fastest renewable electricity transformation: Luxembourg went from 8% to 91% renewable between 2010 and 2024.
+- Globally, four EU countries make the wind top 10 (led by Germany, 139 TWh), but in solar the EU trails far behind China's 839 TWh.
+- The EU has fully decoupled growth from energy: GDP up ~48% since 2000 while energy consumption fell ~10%.
+
 ## Primary Energy and Renewables
 
 Total primary energy demand across the EU-27 in 2024, alongside per-capita use. Demand is heavily concentrated: Germany, France, Italy, Spain and Poland account for 63.9% of the EU total. The per-capita view flips the ranking, with Malta, Finland and Luxembourg on top and Romania using roughly a quarter of Malta's level.
