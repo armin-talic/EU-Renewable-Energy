@@ -59,7 +59,7 @@ The global solar top 10, EU members in yellow. China alone (839 TWh) produces ne
 
 ## Economic Decoupling
 
-GDP versus primary energy use, indexed to 2000. The EU-27 economy grew ~48% while energy consumption *fell* ~10%, the definition of absolute decoupling. The pattern holds for each of the three biggest consumers, with Germany and France opening gaps of more than 57 points between output and energy use.
+GDP versus primary energy use, indexed to 2000. The EU-27 economy grew ~48% while energy consumption *fell* ~10%. The pattern holds for each of the three biggest primary energy consumers, with Germany and France opening gaps of more than 57 points between GDP growth and energy use.
 
 ![EU Decoupling Ribbon](Charts/12_EU_Decoupling_Ribbon.png)
 
