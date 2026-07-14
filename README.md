@@ -12,8 +12,8 @@ Tracking the EU-27 energy transition from 2000 to 2024, using the [Our World in 
 - Sweden runs the cleanest grid (roughly 99% low-carbon electricity); Malta (84%), Cyprus (77%) and Poland (69%) remain the most fossil-dependent.
 - Denmark achieved the deepest grid decarbonization, cutting its fossil share by 74 points since 2000 (down to 11%).
 - Fastest renewable electricity transformation: Luxembourg went from 8% to 91% renewable between 2010 and 2024.
-- Globally, four EU countries make the wind top 10 (led by Germany, 139 TWh), but in solar the EU trails far behind China's 839 TWh.
-- The EU has fully decoupled growth from energy: GDP up ~48% since 2000 while energy consumption fell ~10%.
+- Globally, four EU countries make the wind top 10 (led by Germany, 139 TWh, followed by Spain, France and Sweden), and in solar three EU countries are among the top 10 producers wordlwide (Germany, Spain, Italy)
+- The EU has decoupled growth from energy: GDP up ~48% since 2000 while energy consumption fell ~10%.
 
 ## Primary Energy and Renewables
 
