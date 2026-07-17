@@ -2,7 +2,7 @@
 
 Tracking the EU-27 energy transition from 2000 to 2024, using the [Our World in Data energy dataset](https://github.com/owid/energy-data). All charts are built in R with ggplot2. The analysis moves from overall energy demand, to the electricity mix, to the EU's position among global leaders, and finally to whether economic growth has decoupled from energy use.
 
-**Live interactive dashboard: [armin-talic.github.io/EU-Renewable-Energy/d3](https://armin-talic.github.io/EU-Renewable-Energy/d3/)**
+*Live interactive dashboard built with d3.js: [armin-talic.github.io/EU-Renewable-Energy/d3](https://armin-talic.github.io/EU-Renewable-Energy/d3/)*
 
 ## Summary
 
