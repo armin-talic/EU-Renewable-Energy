@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EU Energy Transition Dashboard</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<aside id="sidebar">
+  <div class="side-title">Filter</div>
+  <div class="side-hint">Click a country here or on the map. Every chart follows.</div>
+  <div id="side-eu" class="side-item side-eu">EU-27 (all countries)</div>
+  <button id="progress-btn" class="side-progress" style="display:none"></button>
+  <div id="country-list"></div>
+</aside>
+
+<main id="content">
+
+<header class="page-header">
+  <h1>EU Energy Transition (2000-2025)</h1>
+  <p class="page-sub">Tracking the EU-27 energy transition. Data: Our World in Data energy dataset. Charts: D3.js</p>
+</header>
+
+<!-- ===== 1. Primary energy ===== -->
+<section class="card">
+  <h2 class="chart-title">Primary Energy Consumption (2024) <span class="scope"></span></h2>
+  <div class="text-block">
+    <p>Total primary energy demand across the EU-27, alongside per-capita use. Demand is heavily concentrated: Germany, France, Italy, Spain and Poland account for <b><span id="top5-pct"></span>%</b> of the EU total, with Germany alone at 3,195 TWh.</p>
+  </div>
+  <div class="map-center">
+    <div id="map-toggle" class="map-toggle">
+      <button data-m="total" class="active">Total Energy Consumption</button>
+      <button data-m="percap">Energy Use per Capita</button>
+    </div>
+    <div id="map-legend" class="grad-legend"></div>
+    <div id="map"></div>
+  </div>
+  <div class="text-block below">
+    <p>Switch the map to per capita and the ranking flips entirely: Malta, Finland and Luxembourg sit on top, while Romania uses roughly a quarter of Malta's level.</p>
+    <p class="caption">* Malta data is from 2023</p>
+  </div>
+</section>
+
+<!-- ===== 2. Wind ===== -->
+<section class="card">
+  <h2 class="chart-title">Wind Energy Producers (2025) <span class="scope"></span></h2>
+  <div class="chart-wrap">
+    <div id="wind"></div>
+    <div class="chart-overlay wind-overlay">
+      <p>Wind is the EU's biggest source of renewable electricity, and it is Germany's race: <b>136 TWh</b> in 2025, more than Spain and France, the next two, combined. The top three alone produce roughly half of the EU's ~480 TWh of wind power.</p>
+      <p>Geography shows through: the North Sea and Baltic coastlines fill the front of the field, while Slovakia, Slovenia and Malta generate essentially none. Even so, the global race is elsewhere: China alone generates about twice as much wind power as the entire EU.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 3. Solar ===== -->
+<section class="card">
+  <h2 class="chart-title">Solar Energy Producers (2025) <span class="scope"></span></h2>
+  <div class="text-block">
+    <p>Solar is spread more evenly than wind, but the podium looks familiar: Germany (90 TWh), Spain (63) and Italy (45) deliver over half of the EU's ~367 TWh. Bubble size represents energy produced.</p>
+  </div>
+  <div id="solar"></div>
+</section>
+
+<!-- ===== 3b. Country progression (hidden until requested) ===== -->
+<section class="card" id="sec-progress" style="display:none">
+  <button id="progress-close" class="progress-close" title="Hide this section">&#10005; Hide</button>
+  <h2 class="chart-title">Renewables Over the Years <span class="scope"></span></h2>
+  <div class="text-block">
+    <p>How each of the four renewable sources grew from 2000 to 2025: a wind turbine per year (tower height = wind generation), a sun per year (height = solar generation), and lines for hydro and biofuels.</p>
+  </div>
+  <div id="progress-legend" class="legend-inline"></div>
+  <div id="progress"></div>
+</section>
+
+<!-- ===== 4. Renewable share of primary energy ===== -->
+<section class="card">
+  <div class="section-flex rev">
+    <div class="story">
+      <p>How much of each country's <i>total</i> energy demand, not just electricity, is met by renewables, split by source: solar, wind, hydro, biofuels, and other renewables (geothermal, wave, tidal). Sweden leads at 51%; Czechia still sits at just 10%.</p>
+      <p>The composition matters as much as the total: Denmark's 42% is built on wind, hydro carries Sweden, Austria and Latvia, and biofuels do surprisingly heavy lifting across the Baltics and Nordics.</p>
+      <p class="caption">Malta is excluded: it reports no renewable-share data. Shares run through 2024, the latest reported year.</p>
+    </div>
+    <div class="charts">
+      <h2 class="chart-title">Renewable Energy Share of Primary Energy (2024) <span class="scope"></span></h2>
+      <div id="renmix-legend" class="legend-inline"></div>
+      <div id="renmix"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 5. Electricity mix ===== -->
+<section class="card">
+  <div class="section-flex">
+    <div class="story">
+      <p>The electricity mix since 2000. Across the EU-27, wind and solar have grown from almost nothing to nearly a third of all generation by 2025, while coal's share has more than halved.</p>
+      <p>Filter to a country to see how different the national systems are: nuclear-anchored France, renewables-led Germany, gas-reliant Italy, coal-heavy Poland.</p>
+    </div>
+    <div class="charts">
+      <h2 class="chart-title">Electricity Generation by Source <span class="scope"></span></h2>
+      <div id="elec-legend" class="legend-inline"></div>
+      <div id="elec"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 6. Coal vs renewables ===== -->
+<section class="card">
+  <div class="section-flex rev">
+    <div class="story">
+      <p>Absolute electricity generation from coal versus renewables, in TWh. The EU-wide lines crossed around 2012-2013 and the gap has since exploded: by 2025 renewables deliver roughly 1,300 TWh, more than five times coal.</p>
+      <p>Even lignite-heavy Germany crossed over in 2019, while Poland, the last big holdout, still leans on coal for most of its electricity.</p>
+    </div>
+    <div class="charts">
+      <h2 class="chart-title">Coal vs. Renewables (Electricity Generation) <span class="scope"></span></h2>
+      <p class="chart-sub" id="coalren-cross"></p>
+      <div id="coalren-legend" class="legend-inline"></div>
+      <div id="coalren"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 7. Decoupling ===== -->
+<section class="card">
+  <div class="section-flex">
+    <div class="story">
+      <p>GDP versus primary energy use, indexed to 2000 = 100. The EU-27 economy grew ~48% while energy consumption <i>fell</i> ~10%: the definition of absolute decoupling.</p>
+      <p id="dec-gap" class="dyn"></p>
+      <p class="caption">* GDP is adjusted for inflation and differences in living costs between countries, and is only available through 2022.</p>
+    </div>
+    <div class="charts">
+      <h2 class="chart-title">Efficiency &amp; Decoupling <span class="scope"></span></h2>
+      <div id="dec-legend" class="legend-inline"></div>
+      <div id="dec"></div>
+    </div>
+  </div>
+</section>
+
+<footer class="page-footer">
+  <p>Data: <a href="https://github.com/owid/energy-data" target="_blank" rel="noopener">Our World in Data, Energy dataset</a> &middot; Charts: D3.js &middot; Original R/ggplot2 version: <a href="https://github.com/armin-talic/EU-Renewable-Energy" target="_blank" rel="noopener">EU-Renewable-Energy</a></p>
+</footer>
+
+</main>
+
+<div id="tooltip"></div>
+
+<script src="lib/d3.v7.min.js"></script>
+<script>
+  // fallback to CDN if the local copy failed to load
+  if (!window.d3) {
+    document.write('<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"><\/script>');
+  }
+</script>
+<script src="data/energy.js"></script>
+<script src="data/geo.js"></script>
+<script src="js/main.js"></script>
+<script src="js/chart_consumption.js"></script>
+<script src="js/chart_wind.js"></script>
+<script src="js/chart_solar.js"></script>
+<script src="js/chart_progression.js"></script>
+<script src="js/chart_renmix.js"></script>
+<script src="js/chart_elec.js"></script>
+<script src="js/chart_coalren.js"></script>
+<script src="js/chart_decoupling.js"></script>
+<script>APP.start();</script>
+
+</body>
+</html>
